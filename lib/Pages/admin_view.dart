@@ -6,11 +6,9 @@ class AdminView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Fondo negro
           Container(
             color: Colors.black,
           ),
-          // Forma turquesa con diseño ondulado
           Positioned(
             top: MediaQuery.of(context).size.height * 0.5,
             left: 0,
@@ -23,14 +21,12 @@ class AdminView extends StatelessWidget {
               ),
             ),
           ),
-          // Campos de texto, botón de iniciar sesión y opción de registro
           Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Campo de texto para el nombre de usuario o correo
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Nombre de usuario o correo',
@@ -46,7 +42,6 @@ class AdminView extends StatelessWidget {
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: 20),
-                  // Campo de texto para la contraseña
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Contraseña',
@@ -62,10 +57,9 @@ class AdminView extends StatelessWidget {
                     obscureText: true,
                   ),
                   SizedBox(height: 20),
-                  // Botón de iniciar sesión
                   ElevatedButton(
                     onPressed: () {
-                      // Acción al presionar el botón de iniciar sesión
+                      Navigator.pushNamed(context, '/homeAdmin');
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
@@ -80,10 +74,8 @@ class AdminView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20),
-                  // Texto de opción para registrarse
                   GestureDetector(
                     onTap: () {
-                      // Navegar a la pantalla de registro
                       Navigator.pushNamed(context, '/register');
                     },
                     child: Text(

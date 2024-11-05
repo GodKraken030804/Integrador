@@ -6,9 +6,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.integrador"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    namespace = "com.example.integrador" // Cambia "com.example.integrador" por el namespace adecuado
+    compileSdk = 34 // Especifica explícitamente la versión de compileSdk
+
+    ndkVersion = "21.3.6528147" // Puedes reemplazar con tu versión de NDK instalada
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -16,27 +17,30 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = "1.8"
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.integrador"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = 21 // Es recomendable tener al menos minSdk 21 para soporte de bibliotecas
+        targetSdk = 33 // Especifica explícitamente la versión de targetSdk
+        versionCode = 1
+        versionName = "1.0"
+
+        multiDexEnabled true // Habilita multidex para manejar más métodos si tienes muchas dependencias
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.debug
+            signingConfig = signingConfigs.debug // Cambia esto a un archivo de firma real en producción
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1' // Soporte para multidex
 }
 
 flutter {
